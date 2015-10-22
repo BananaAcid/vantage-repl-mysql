@@ -1,0 +1,53 @@
+{
+  "name": "vantage-repl-mysql",
+  "version": "1.0.0",
+  "description": "Advanced REPL extension for vantage.js",
+  "main": "./lib/repl-mysql.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BananaAcid/vantage-repl-mysql.git"
+  },
+  "keywords": [
+    "api",
+    "cli",
+    "repl",
+    "mysql",
+    "vantage",
+    "vantagejs"
+  ],
+  "author": "BananaAcid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BananaAcid/vantage-repl-mysql/issues"
+  },
+  "homepage": "https://github.com/BananaAcid/vantage-repl-mysql#readme",
+  "devDependencies": {
+  },
+  "optionalDependencies": {
+  },
+  "dependencies": {
+    "vantage": ">=1.5.1",
+    "mysql": "2.9.0",
+    "strip-ansi": ">=3.0.0",
+    "chalk": "1.1.1"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "iojs": ">= 1.0.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "browser": false
+    },
+    "rules": {
+      "no-underscore-dangle": 0,
+      "no-process-exit": 0
+    }
+  }
+}
