@@ -1,11 +1,13 @@
 # vantage-repl-mysql
-MySQL REPL extension for vantage.js
+Multiline MySQL REPL extension for vantage.js
+
+Workaround for remote connections, multiline will only work on local ( using .show(); ) tty.
 
 ##### Installation
 
 ```bash
-npm install vantage-repl-mysql
 npm install vantage
+npm install vantage-repl-mysql
 ```
 
 ##### Programmatic use
@@ -16,15 +18,13 @@ var Vantage = require('vantage')
   , repl = require('vantage-repl-mysql')
   ;
 
-var vantage = Vantage();
-
-vantage
+Vantage()
   .delimiter('node~$')
   .use(repl, {
     host     : 'localhost',
-    user     : 'me',
-    password : 'secret',
-    database : 'my_db'
+    user     : 'root',
+    password : null, // for a XAMP installed MariaDB
+    database : null
   })
   .show();
 ```
@@ -35,9 +35,12 @@ node~$
 node~$ mysql
  (Banner is shown, presented below ..)
 node~$ mysql>
-node~$ mysql> SELECT 1 + 1 AS solution
-...result...
-node~$ js> ..
+node~$ mysql> SELECT
+node~$    ... 1 + 1
+node~$    ... AS solution;
+[ { solution: 2 } ]
+Rows: 1
+node~$ mysql> ..
 node~$
 ```
 
@@ -69,7 +72,13 @@ Commands:
 
 The banner shown above, when entering the REPL
 ```
-node~$ js
+node~$ mysql
  In REPL you can execute MySQL queries.
- **|Use "exit" or ".." to close the REPL. Use "..-" to exit completely.
+ * Semicolon ends a command, until then, enter creates a multiline statement
+ * execute "USE databasename;" to be able to work with a table
+ * t?  executes "SHOW TABLES;"
+ * db? executes "SHOW DATABASES;"
+ * q?  displays the last executed command
+ * qq? executes the last executed command
+ **|Use "exit" or ".." to close the REPL.
 ```
